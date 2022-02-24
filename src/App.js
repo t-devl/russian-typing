@@ -1,64 +1,39 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
 import Input from "./components/Input/Input";
 import Text from "./components/Text/Text";
-
-const words = [
-  "и",
-  "в",
-  "не",
-  "он",
-  "на",
-  "я",
-  "что",
-  "тот",
-  "быть",
-  "с",
-  "а",
-  "весь",
-  "это",
-  "как",
-  "она",
-  "по",
-  "но",
-  "они",
-  "к",
-  "у",
-  "ты",
-  "из",
-  "мы",
-  "за",
-  "вы",
-  "так",
-  "же",
-  "от",
-  "сказать",
-  "этот",
-  "который",
-  "мочь",
-  "человек",
-  "о",
-  "один",
-  "ещё",
-  "бы",
-  "такой",
-  "только",
-  "себя",
-  "своё",
-  "какой",
-  "когда",
-  "уже",
-  "для",
-  "вот",
-  "кто",
-  "да",
-  "говорить",
-  "год",
-];
+import { text } from "./data";
 
 function App() {
   const [userInput, setUserInput] = useState("");
   const [currentWordIndex, setCurrentWordIndex] = useState(0);
+  const [words, setWords] = useState([]);
+
+  useEffect(() => {
+    setWords(getRandomWords());
+  }, []);
+
+  useEffect(() => {
+    if (currentWordIndex && currentWordIndex === words.length) {
+      setWords(getRandomWords());
+      setCurrentWordIndex(0);
+    }
+  }, [currentWordIndex]);
+
+  function getRandomWords() {
+    let randomNumber = Math.floor(Math.random() * text.length);
+    let wordsFromText = text[randomNumber].split(" ");
+    return shuffle(wordsFromText);
+  }
+
+  function shuffle(arr) {
+    let shuffledArr = [...arr];
+    for (let i = 0; i < arr.length; i++) {
+      let j = Math.floor(Math.random() * (arr.length - i) + i);
+      [shuffledArr[i], shuffledArr[j]] = [shuffledArr[j], shuffledArr[i]];
+    }
+    return shuffledArr;
+  }
 
   function nextWord() {
     if (userInput === words[currentWordIndex]) {
