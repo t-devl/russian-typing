@@ -1,0 +1,17 @@
+.key {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30px;
+  height: 30px;
+  margin: 2px;
+  background-color: lightgrey;
+}
+
+.key--faded {
+  opacity: 0.5;
+}
+
+.key--active {
+  background-color: var(--blue);
+}

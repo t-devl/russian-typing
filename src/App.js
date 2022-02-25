@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import "./App.css";
 import Input from "./components/Input/Input";
+import Keyboard from "./components/Keyboard/Keyboard";
 import Text from "./components/Text/Text";
 import { text } from "./data";
 
@@ -8,6 +9,7 @@ function App() {
   const [userInput, setUserInput] = useState("");
   const [currentWordIndex, setCurrentWordIndex] = useState(0);
   const [words, setWords] = useState([]);
+  const [activeKey, setActiveKey] = useState("");
 
   useEffect(() => {
     setWords(getRandomWords());
@@ -53,7 +55,9 @@ function App() {
         input={userInput}
         setUserInput={setUserInput}
         nextWord={nextWord}
+        setActiveKey={setActiveKey}
       ></Input>
+      <Keyboard activeKey={activeKey}></Keyboard>
     </div>
   );
 }

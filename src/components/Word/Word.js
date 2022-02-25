@@ -4,7 +4,7 @@ import "./Word.css";
 
 export default function Word({ value, userInput, isWordCompleted, isActive }) {
   return (
-    <div className={`word ${isActive ? "active" : ""}`}>
+    <div className={`word ${isActive ? "word--active" : ""}`}>
       {value.split("").map((letter, index) => (
         <Letter
           key={index}

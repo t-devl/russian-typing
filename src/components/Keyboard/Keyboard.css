@@ -1,0 +1,21 @@
+.keyboard {
+  display: flex;
+  flex-direction: column;
+  margin-top: 1rem;
+}
+
+.row {
+  display: flex;
+}
+
+.row--second {
+  margin-left: 47.5px;
+}
+
+.row--third {
+  margin-left: 55px;
+}
+
+.row--fourth {
+  margin-left: 70px;
+}
